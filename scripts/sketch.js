@@ -1,4 +1,5 @@
-var borderCnt = 0;
+var opacityCnt = 0;
+var navCnt = $('.nav span').length
 
 function sketchWeb(){
 	hideMover(movers[0]);
@@ -31,22 +32,50 @@ function afterGrow(){
 }
 
 function showContentBorder(){
-  borderCnt +=0.01;
-  $('.content').css({'border-top-color': 'rgba(0,0,0,'+ borderCnt +')'});
-  if (borderCnt <1)    requestAnimationFrame(showContentBorder);
-  else{
-  	shoxTxtBorders();
-  }
+	opacityCnt +=0.01;
+  	$('.content').css({'border-top-color': 'rgba(0,0,0,'+ opacityCnt +')'});
+  	if (opacityCnt <1)    requestAnimationFrame(showContentBorder);
+  	else
+  		shoxTxtBorders();
 }
   
 function shoxTxtBorders(){
-	borderCnt = 0
+	opacityCnt = 0
 	$('.txt').animate({opacity: 1}, 1000, showNavBorder);
 }
 
 function showNavBorder(){
-  borderCnt +=0.01;
-  $('.nav').css({'border-bottom-color': 'rgba(0,0,0,'+ borderCnt +')'});
-  if (borderCnt <1)    requestAnimationFrame(showNavBorder);
-
+	opacityCnt +=0.01;
+	$('.nav').css({'border-bottom-color': 'rgba(0,0,0,'+ opacityCnt +')'});
+ 	if (opacityCnt <1)    requestAnimationFrame(showNavBorder);
+  	else
+  		showNavContent();
 }
+
+function showNavContent(){
+	navCnt--;
+	if (navCnt >= 0)
+  		$($('.nav span')[navCnt]).animate({opacity: 1}, 1000, showNavContent);
+  	else if(navCnt ==-1) {
+  		opacityCnt = 0
+  		showNavColor()
+  	}
+}
+function showNavColor(){
+	opacityCnt +=0.01;
+	$('.nav').css({'background-color': 'rgba(0,0,0,'+ opacityCnt +')'});
+ 	if (opacityCnt <0.3)    requestAnimationFrame(showNavColor);
+ 	else{
+ 		opacityCnt = 0;
+ 		showHeader();
+ 	}
+}
+
+function showHeader(){
+	$('.header').animate({opacity: 1}, 1000, showTextContent);
+}
+function showTextContent(){
+	$('.txt p').animate({opacity: 1}, 1000);
+}
+
+

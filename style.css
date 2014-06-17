@@ -16,13 +16,14 @@ svg {
 	position: absolute;
 }
 
-canvas{ background-color: silver;}
+/*canvas{ background-color: silver;}*/
+
 .while_grow{
 	top: 	 0px;
 	left: 	 0px;
 	z-index: -10;
-	position:absolute;
-	background: url();
+	position: absolute;
+	background:  url();
 	background-size:   100% auto;
     background-repeat: no-repeat;
 }
@@ -43,6 +44,8 @@ canvas{ background-color: silver;}
 	padding: 1em; 
 }
 
+.btn:hover{  color:#fff;}
+
 .header{
 	width: 100%;
 	height: 50%;
@@ -52,7 +55,6 @@ canvas{ background-color: silver;}
 	  -moz-background-size: cover;
 	  -o-background-size: cover;
 	  background-size: cover;
-
 }
 
 .content{
@@ -64,7 +66,6 @@ canvas{ background-color: silver;}
   	display: -ms-flexbox; 	/* TWEENER - IE 10 */
    	display: -webkit-flex; 	/* NEW - Chrome */
    	display: flex; 			/* NEW, Spec - Opera 12.1, Firefox 20+ */
-
 }
 
 .txt_holder{
@@ -96,7 +97,7 @@ canvas{ background-color: silver;}
 	height: 100%;
 	float:  left;
 	background: url();
-	background-size:   100% auto;
+	background-size:  100% auto;
     background-repeat: no-repeat;
 }
 
