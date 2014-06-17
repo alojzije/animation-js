@@ -14,3 +14,7 @@ function animateGravity(m){
         
     }, 10);
 }
+
+function hideMover(m){
+    $(m.domId).attr('style','display:none;');
+}

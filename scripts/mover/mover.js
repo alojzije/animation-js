@@ -61,7 +61,7 @@ Mover.prototype.checkIfFinished = function (intervalId) {
         this.isMoving = false;
         console.log("fin " + this.domId);
             // drawFractal
-    reposition_canvas(this.position.x, this.position.y);
+    reposition_canvas(this.position.x, this.position.y+this.ry*2);
     growFractal();
 
     }

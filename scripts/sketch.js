@@ -1,4 +1,5 @@
 function sketch(x, width, height){
+	movers = []
 	var winHeight = $(window).height() ;
 
 	var path =  'M'+ (x-1) +','+ winHeight + ' ';
