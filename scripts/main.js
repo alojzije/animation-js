@@ -30,14 +30,16 @@ $(window).resize(function () {
  	var width  = $(window).width();
  	var height = $(window).height();
   var canvasHolder = $("#canvas_holder");
-  canvasHolder.css( 'left' , (width - context.canvas.clientWidth) );
+  canvasHolder.css( {'left' : width -canvasHolder.outerWidth()-1,
+                     'top':  height - canvasHolder.innerHeight()+4
+  });
   if ($('#treeBorder').length >0){
     var path = $('#treeBorder').attr('d');
     var path1 = 'M'  + (canvasHolder.offset().left-1) +','+ height;
     var path2 = path.substring(path.indexOf(' '))
     $('#treeBorder').attr('d', path1 +path2 );
 
-    $("#canvas_holder").css('left', width - $("#canvas_holder").outerWidth());
+    //$("#canvas_holder").css('left', width - $("#canvas_holder").outerWidth());
 
 
   }
