@@ -25,6 +25,4 @@ text tspan{
 }
 
 
-.random_color:hover { 
-	opacity :1 !important;
-}
+canvas{ background-color:silver; opacity: 0.5}

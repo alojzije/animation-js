@@ -19,7 +19,3 @@ function makeCircle(type, positionVect, velocityVect, accVect, mass){
         return new Mover('#'+id, positionVect, velocityVect, accVect, mass);
     }
 
-// makes SVG object <type>
-function SVG(type){
-   return document.createElementNS('http://www.w3.org/2000/svg', type);
-}

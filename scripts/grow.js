@@ -59,6 +59,7 @@ function bounce_back2(){
   k +=0.1;
   canvasDraw(k);
   if (k <=25)    requestAnimationFrame(bounce_back2);
+  else sketch($("#canvas_holder").offset().left, xStart*2, yStart+10);
 
 }
 function reposition_canvas(x, y){
@@ -72,7 +73,7 @@ function growFractal(){
   var intervalId = setInterval(function(){
       drawLine(xStart, yStart, xStart, yStart-i);
       context.stroke();
-      if (i++ >=360) {
+      if (i++ >= yStart-10) {
         clearInterval(intervalId);
           branch_out();
   }
