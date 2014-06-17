@@ -1,52 +1,52 @@
-function sketch(x, width, height){
-	movers = []
-	var winHeight = $(window).height() ;
+var borderCnt = 0;
 
-	var path =  'M'+ (x-1) +','+ winHeight + ' ';
-	var border1 = $(SVG('path'))
-            .attr('id', 'treeBorder')
-            .attr('d', path)
-            .attr('stroke', '#000')
-            .attr('fill', 'none')
-            .appendTo($('#svg1'));
+function sketchWeb(){
+	hideMover(movers[0]);
+	var imgUrl 		 = canvas.toDataURL();
+	var canvasHolder = $('#canvas_holder')
+	canvasHolder.css('background-image', 'url('+ imgUrl +')');
+	
+	$('#canvas').css('opacity', 0);
+	var cHeight = $('.txt_holder').outerHeight();
+	var cLeft 	= $('.txt_holder').outerWidth();
+	var cTop 	= $(window).height() - cHeight;
+	var cWidth 	= $(window).width()  - cLeft;
+	canvasHolder.animate({
+		top: cTop,
+		left: cLeft,
+		width: cWidth,
+		height: cHeight
+		}, 1500, afterGrow);
 
-	var i = 0;
-	var j = 0;
-	var k = 0;
-	 var intervalId = setInterval(function(){
-	 	  
-	 	  if (i++ < height) 		 path += 'v-' + 1 +' ';
-	 	  else if (j++ < width) 	 path += 'h'  + 1 +' ';
-	 	  else if (k++ < height) 	 path += 'v'  + 1 +' ';
-	      else{
-	        clearInterval(intervalId);
-	        drawHorizontalLines();
-	    }
-	    border1.attr('d', path) 
-	  },10);
 }
 
-function drawHorizontalLines(){
-	var width  = $(window).width();
- 	var height = $(window).height();
-	 var path = 'M0,' +  ($("#canvas_holder").offset().top +1)+' ';
+function afterGrow(){
+	var imgUrl 		 = canvas.toDataURL();
+	var canvasHolder = $('#canvas_holder');
+	canvasHolder.removeAttr('style');
+	canvasHolder.css( 'background-image', 'url('+ imgUrl +')');
+	canvasHolder.attr('class', 'after_grow');
+	showContentBorder();
+	
+}
 
-	var border1 = $(SVG('path'))
-            .attr('id', 'bottomDelimiter')
-            .attr('d', path)
-            .attr('stroke', '#000')
-            .attr('fill', 'none')
-            .appendTo($('#svg1'));
-    var i = 0;
-   
-    var intervalId = setInterval(function(){
-	 	  
-	 	  if (i++ < width) 		 path += 'h' + 1 +' ';
-	      else{
-	        clearInterval(intervalId);
-	        }
-	    border1.attr('d', path) 
-	  },10);
+function showContentBorder(){
+  borderCnt +=0.01;
+  $('.content').css({'border-top-color': 'rgba(0,0,0,'+ borderCnt +')'});
+  if (borderCnt <1)    requestAnimationFrame(showContentBorder);
+  else{
+  	shoxTxtBorders();
+  }
+}
+  
+function shoxTxtBorders(){
+	borderCnt = 0
+	$('.txt').animate({opacity: 1}, 1000, showNavBorder);
+}
 
+function showNavBorder(){
+  borderCnt +=0.01;
+  $('.nav').css({'border-bottom-color': 'rgba(0,0,0,'+ borderCnt +')'});
+  if (borderCnt <1)    requestAnimationFrame(showNavBorder);
 
 }

@@ -33,11 +33,6 @@ function drawLine(x1, y1, x2, y2){
 function canvasDraw(angleOffset){
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.beginPath();
-  context.arc(xStart, yStart-2, 4, 0, 2 * Math.PI, false);
-  context.closePath();
-  context.fill();
-  hideMover(movers[0]);
-  context.beginPath();
   drawTree(xStart, yStart, -90, angleOffset, depth);
   context.closePath();
   context.stroke();
@@ -64,7 +59,7 @@ function bounce_back2(){
   k +=0.1;
   canvasDraw(k);
   if (k <=25)    requestAnimationFrame(bounce_back2);
-  else sketch($("#canvas_holder").offset().left, xStart*2, yStart+2);
+  else sketchWeb();
 
 }
 function reposition_canvas(x, y){
