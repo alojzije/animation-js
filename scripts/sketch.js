@@ -75,7 +75,21 @@ function showHeader(){
 	$('.header').animate({opacity: 1}, 1000, showTextContent);
 }
 function showTextContent(){
-	$('.txt p').animate({opacity: 1}, 1000);
+	$('.txt p').animate({opacity: 1}, 1000, addImages());
+}
+function addImages(){
+$('.after_grow p').animate({opacity: 1}, 1000);
+	var img = new Image() //creates a variable for a new image
+	img.src= "./work.png" // specifies the location of the image
+
+	img.onload = function() {
+		context.drawImage(img,canvas.width*0.5-125, canvas.height -90);
+		var imgUrl = canvas.toDataURL();
+		$('#canvas_holder').css( 'background-image', 'url('+ imgUrl +')');
+
+	};
+
+		
 }
 
 
