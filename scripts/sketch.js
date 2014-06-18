@@ -78,7 +78,7 @@ function showTextContent(){
 	$('.txt p').animate({opacity: 1}, 1000, addImages());
 }
 function addImages(){
-$('.after_grow p').animate({opacity: 1}, 1000);
+$('.canvas_txt p').animate({opacity: 1}, 1000);
 	var img = new Image() //creates a variable for a new image
 	img.src= "./work.png" // specifies the location of the image
 
